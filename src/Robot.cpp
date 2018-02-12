@@ -48,8 +48,12 @@ public:
 
 	Encoder 	 * enc = new Encoder(0, 1, false, Encoder::k4X);
 
-	DifferentialDrive * _diffDrive = new DifferentialDrive(*leftFront, //Sets up drive
-			*rghtFront);
+	SpeedControllerGroup m_left = new SpeedControllerGroup(leftFront, leftFollower);
+	
+	SpeedControllerGroup m_right = new SpeedControllerGroup(rightFront, rightFollower);
+	
+	DifferentialDrive * _diffDrive = new DifferentialDrive(m_left, //Sets up drive
+			m_right);
 
 
 
